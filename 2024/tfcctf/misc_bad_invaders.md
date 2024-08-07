@@ -90,9 +90,8 @@ we can modify our client to send "move to left" action as all possible player id
 
 ```python3
 for i in range (101):  
-  
-	s.send(f"{i}|M|0;".encode())  
-	print(f"sent for {i}")   
+	socket.send(f"{i}|M|0;".encode())  
+	print(f"sent with player id: {i}")   
 ```
    
 this causes the bot to move to the left and out of the cover  
