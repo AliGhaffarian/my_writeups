@@ -9,15 +9,15 @@ the challenge files include
   
   
 game :  
------  
- 👾                                        
+``` 
+👾                                        
   
   
   
-   🧱  
+      🧱  
   
-🚀                                         
------  
+🚀
+```
   
   
 we are the rocket and the main goal is to shoot the bot and win   
