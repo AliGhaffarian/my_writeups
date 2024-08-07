@@ -50,15 +50,15 @@ so lets breakdown the logic of the function
   
 ```go  
 for {  
-			tempN, err := conn.Read(tempBuffer)  
-			if tempN == 0 || err != nil {  
-				return  
-			}  
-			if tempBuffer[0] == ';' {  
-				break  
-			}  
-			buffer = append(buffer, tempBuffer[0])  
-			n += 1  
+	tempN, err := conn.Read(tempBuffer)  
+	if tempN == 0 || err != nil {  
+		return  
+	}  
+	if tempBuffer[0] == ';' {  
+		break  
+	}  
+	buffer = append(buffer, tempBuffer[0])  
+	n += 1  
 }  
 ```
   
@@ -66,12 +66,12 @@ for {
 
 ```go
 playerExists := false  
-		for _, player := range g.Players {  
-			if player.Conn == conn {  
-				playerExists = true  
-				break  
-			}  
-		}  
+for _, player := range g.Players {  
+	if player.Conn == conn {  
+		playerExists = true  
+		break  
+	}  
+}  
 ``` 
 
 3_call the function for the requested action  
