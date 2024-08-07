@@ -32,7 +32,7 @@ f"{PLAYER_ID}|{action}|{option_for_action};"
    
 maybe we might wanna look into how players are handled more closely:  
 
-```  
+```go
 player id generation:  
 this is happening at server side in the GenerateId() function:  
 func GenerateId() int {   
@@ -48,7 +48,7 @@ receiving client input and validation is happenning in the handleConnection() fu
 so lets breakdown the logic of the function  
 1_read from the socket untill ';' is seen  
   
-```  
+```go  
 for {  
 			tempN, err := conn.Read(tempBuffer)  
 			if tempN == 0 || err != nil {  
@@ -64,7 +64,7 @@ for {
   
 2_check if player's socket match any of the sockets in the players list  
 
-```  
+```go
 playerExists := false  
 		for _, player := range g.Players {  
 			if player.Conn == conn {  
@@ -88,7 +88,7 @@ so what if we place an id that isnt ours in client message format?
  
 we can modify our client to send "move to left" action as all possible player ids  
 
-```
+```python3
 for i in range (101):  
   
 	s.send(f"{i}|M|0;".encode())  
