@@ -32,11 +32,13 @@ f"{PLAYER_ID}|{action}|{option_for_action};"
 
 maybe we might wanna look into how players are handled more closely:
 
+```
 player id generation:
 this is happening at server side in the GenerateId() function:
 func GenerateId() int {
 	return rand.Intn(100)
 }
+```
 
 note that the range of player ids are 0-100 totally bruteforcable
 
@@ -46,6 +48,7 @@ receiving client input and validation is happenning in the handleConnection() fu
 so lets breakdown the logic of the function
 1_read from the socket untill ';' is seen
 
+```
 for {
 			tempN, err := conn.Read(tempBuffer)
 			if tempN == 0 || err != nil {
@@ -57,9 +60,11 @@ for {
 			buffer = append(buffer, tempBuffer[0])
 			n += 1
 }
+```
 
 2_check if player's socket match any of the sockets in the players list
 
+```
 playerExists := false
 		for _, player := range g.Players {
 			if player.Conn == conn {
@@ -67,6 +72,7 @@ playerExists := false
 				break
 			}
 		}
+```
 
 3_call the function for the requested action
 	-if player doesnt exist only register action works
@@ -82,10 +88,12 @@ so what if we place an id that isnt ours in client message format?
 
 we can modify our client to send "move to left" action as all possible player ids
 
+```
 for i in range (101):
 
 	s.send(f"{i}|M|0;".encode())
 	print(f"sent for {i}")
+```
 
 this causes the bot to move to the left and out of the cover
 
