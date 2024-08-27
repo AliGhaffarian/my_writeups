@@ -78,7 +78,7 @@ for us to automate the generation this dataset we need to:
 
 ### example
 #### 1_writing arguments
-```python3python3
+```python3
 params = {
         "ifname" : INVALID_IFNAME_LIST + VALID_IFNAME_LIST,
         "ttl" : INVALID_TTL_LIST + VALID_TTL_LIST,
