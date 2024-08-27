@@ -47,9 +47,9 @@ and so on
 
 the function takes 6 parameters and thefore the number of possibilities in terms of whether arguments are valid or not and if not for what reason is like this
 
-ifname possibilities * ip possibilities * netmask possibilities * ttl possibilities * mtu possibilites
+ifname possibilities * ip possibilities * mac possibilities * netmask possibilities * ttl possibilities * mtu possibilites
 
-and if every parameter has two possibilities of being invalid and one possiblity of being valid we need to write 2^9(128) sets of arguments for the function to be called and validate the outcome appropriately
+and if every parameter has two possibilities of being invalid and one possiblity of being valid we need to write 3^6(729) sets of arguments for the function to be called and validate the outcome appropriately
 
 if i find a way to introduce all the possiblities of a argument being invalid have have the dataset automated i can get away with writing 3\*6 (18) sets of data and get on with my day
 
