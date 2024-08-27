@@ -1,6 +1,6 @@
 # my first "good" approach to automated testing
 
-my test automating journey begins when i saw my [dhcp starvation script](https://github.com/AliGhaffarian/dhcp-starvation-using-scapy) having too many unnoticed bugs which to this day i havn't fixed it completely
+my test automating journey begins when i saw [my dhcp starvation script](https://github.com/AliGhaffarian/dhcp-starvation-using-scapy) having too many unnoticed bugs which to this day i havn't fixed it completely
 
 ## my first test automation experiance
 
@@ -27,7 +27,7 @@ this introduced the dataset generation to me, which i was trying to automate as 
 after some time i started the need to automate linux interface configuration
 this time i knew if i don't have a good automated testing i can't really use myown software because of un noticed bugs
 
-going forward with my linux [automation script](https://github.com/AliGhaffarian/reface2/blob/main/reface2/utilities/pyroute2_utilities.py) i wrote this function
+going forward with [my linux automation script](https://github.com/AliGhaffarian/reface2/blob/main/reface2/utilities/pyroute2_utilities.py) i wrote this function
 ```python3
 set_host_data(ifname, ip, mac, netmask=32, ttl=None, mtu=None)
 ```
