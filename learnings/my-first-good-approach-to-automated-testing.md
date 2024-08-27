@@ -1,4 +1,4 @@
-# pytest : my first "good" approach to automated testing
+# my first "good" approach to automated testing
 
 my test automating journey begins when i saw my [dhcp starvation script](https://github.com/AliGhaffarian/dhcp-starvation-using-scapy) having too many unnoticed bugs which to this day i havn't fixed it completely
 
