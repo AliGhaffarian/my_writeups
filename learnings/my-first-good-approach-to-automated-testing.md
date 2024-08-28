@@ -1,6 +1,6 @@
 # my first "good" approach to automated testing
 
-my test automating journey begins when i saw [my dhcp starvation script](https://github.com/AliGhaffarian/dhcp-starvation-using-scapy) having too many unnoticed bugs which to this day i havn't fixed it completely
+my test automating journey begins when i saw [my dhcp starvation script](https://github.com/AliGhaffarian/dhcp-starvation-using-scapy) having too many unnoticed bugs, which to this day i havn't fixed it completely
 
 ## my first test automation experiance
 
@@ -20,49 +20,43 @@ assert dhcp.is_dhcp(not_dhcp) == False
 
 ```
 
-as you can see theres a lot of possiblities for packets to not be a dhcp offer or dhcp pdu at all and it's nearly impossible for me to write them all
+as you can see theres a lot of possiblities for packets to not be a dhcp offer or dhcp pdu at all, and it's nearly impossible for me to write them all
 this introduced the dataset generation to me, which i was trying to automate as much as possible ever since
  
 
-after some time i started the need to automate linux interface configuration
-this time i knew if i don't have a good automated testing i can't really use myown software because of un noticed bugs
+after some time i started to feel the need to automate linux interface configuration
+this time i knew if i don't have a good automated testing i can't really use my own software because of unnoticed bugs
 
 going forward with [my linux automation script](https://github.com/AliGhaffarian/reface2/blob/main/reface2/utilities/pyroute2_utilities.py) i wrote this function
+let this be our testing target
 ```python3
 set_host_data(ifname, ip, mac, netmask=32, ttl=None, mtu=None)
 ```
 
-for the sake of abstraction the details let simplify the parameters like this
-| ifname  | reason of invalidation |
-| ------------- | ------------- |
-| bad_ifname_1  | if_e_1  #if_error_1| 
-| bad_ifname_1  | if_e_2  |
+the function takes 6 parameters, thefore the number of possibilities in terms of:
+1. whether passed parameters are valid or not
+2. if not for what reason
 
-| ip  | reason of invalidation |
-| ------------- | ------------- |
-| bad_ip_1  | ip_e_1  |
-| bad_ip_2  | ip_e_2  |
+is like this
+```python3
+function_call_possibilities = ifname_possibilities * ip_possibilities * mac_possibilities * netmask_possibilities * ttl_possibilities * mtu_possibilites
+```
 
-and so on
+if every parameter has two possibilities of being invalid and one possiblity of being valid, we need to write 3^6(729) sets of arguments for the function to be called with and validate the outcome appropriately
 
-the function takes 6 parameters and thefore the number of possibilities in terms of whether arguments are valid or not and if not for what reason is like this
-
-ifname possibilities * ip possibilities * mac possibilities * netmask possibilities * ttl possibilities * mtu possibilites
-
-and if every parameter has two possibilities of being invalid and one possiblity of being valid we need to write 3^6(729) sets of arguments for the function to be called and validate the outcome appropriately
-
-if i find a way to introduce all the possiblities of a argument being invalid have have the dataset automated i can get away with writing 3\*6 (18) sets of data and get on with my day
+if i find a way to introduce all the possiblities of a argument being invalid and have the dataset automated i can get away with writing 3\*6 (18) sets of data and get on with my day
 
 ## my first "good" approach
 
 when we test a function by calling we usually have a mindset like this
 
-if arguments are correct:
-i expect this function to do it's job and return with status success
-if argument are incorrect:
-i expect this function to exit with the status being a subset of my arguments "reason of invalidation" and (if is expected to be atomic) undo everything it did until it encountered the invalid argument
+* **if arguments are correct:**
+	i expect this function to do it's job and return with status success
+* **if argument are incorrect:**
+	i expect this function to exit with the status being a subset of my arguments "reason of invalidation" and (if is expected to be atomic) undo everything it did until it encountered the invalid argument
 
-we can implement this in our tester script by having generating a list with each entry containing a set of argument for the function call and have the expected return status as a list
+we can implement this in our tester script
+by having generating a list with each entry containing a set of argument for the function call and have the expected return status as a list
 much like this
 ```python3
 [
@@ -71,7 +65,7 @@ much like this
 ]
 ```
 
-for us to automate the generation this dataset we need to:
+**for us to automate the generation this dataset we need to:**
 1. write an instance of each reason of invalidation for a parameter of a function
 2. generate the list of function call data like this
 [(one entry of product of product(arg1_list, arg2_list), union of each argument of this entry's expected status)]
@@ -126,9 +120,10 @@ def generate_pytest_params(*arrays):
     return combined
 ```
 
-note that we remove any error code 0 of the expected error codes to remove any chance of mistakenly accepting a succeed function which wans'nt supposed to
+note that we remove any error code 0 of the expected error codes, to remove any chance of mistakenly accepting a succeeded function which was'nt supposed to
 
-so it's function call time!, for this we pytest has our back with aumated function calls which is quite nice
+### function call time!
+for this we pytest has our back with automated function calls which is quite nice
 
 ```python3
 import pyroute2
