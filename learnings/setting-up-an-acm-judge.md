@@ -1,5 +1,5 @@
 it's not cool to have cheaters in acm compitetions so i volunteered to setup a fairly secure envirenmont to relief the pain
-
+# approaches
 we had some options:
 1_allow internet connection, no local judge server and run the acm in some 3rd party platform
 	-need for firewall and ip filtering
@@ -9,11 +9,13 @@ we had some options:
 	-need server
 	
 	
-so we chose 2 because it was more flexible
+so we chose the latter because it was more flexible
+# the first try
 the first time i tried to build and run [an open source acm judge](https://github.com/DMOJ/online-judge) i encountered tons of build errors probably of conficts with my already installed packages
 why would you do something remotely dumb to that? you may ask
 well because i evaded learning docker for sometime, and as you can tell it's time to embrace my fear of virtualization
 
+# learning docker
 i watched an [introduction to docker](https://www.youtube.com/watch?v=eGz9DS-aIeY&t=672s)
 since i had some clue about docker because of CTFs i have some business with [Dockerfiles](https://docs.docker.com/reference/dockerfile)
 
@@ -33,6 +35,8 @@ when the container is runned run this
 
 now i need to learn how to use docker to not blow up my dear arch build
 i watched some
+
+# a more simple judge to setup
 
 after some more studies i found out about [docker hub](https://hub.docker.com) and how people may have already done something im trying to
 
