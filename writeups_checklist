@@ -4,6 +4,7 @@
 -resize images
 -align english phrases to the left
 -author name
+-fix alignments
 CTF
   -challenge files
   -challenge name and desc
