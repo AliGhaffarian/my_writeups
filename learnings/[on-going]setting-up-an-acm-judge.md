@@ -1,19 +1,19 @@
 it's not cool to have cheaters in acm compitetions so i volunteered to setup a fairly secure envirenmont to relief the pain
 # approaches
-we had some options:
-1_allow internet connection, no local judge server and run the acm in some 3rd party platform
-	-need for firewall and ip filtering
+we had some options:  
+1. allow internet connection, no local judge server and run the acm in some 3rd party platform  
+	- need for firewall and ip filtering  
 
-2_run a local acm judge server and cut the internet connection, and monitor the universities network for any cheaters trying to get to internet
-	-need monitoring scripts
-	-need server
+2. run a local acm judge server and cut the internet connection, and monitor the universities network for any cheaters trying to get to internet  
+	- need monitoring scripts  
+	- need server  
 	
 	
-so we chose the latter because it was more flexible
+so we chose the latter because it was more flexible  
 # the first try
-the first time i tried to build and run [an open source acm judge](https://github.com/DMOJ/online-judge) i encountered tons of build errors probably of conficts with my already installed packages
-why would you do something remotely dumb to that? you may ask
-well because i evaded learning docker for sometime, and as you can tell it's time to embrace my fear of virtualization
+the first time i tried to build and run [an open source acm judge](https://github.com/DMOJ/online-judge) i encountered tons of build errors probably of conficts with my already installed packages  
+why would you do something remotely dumb to that? you may ask  
+well because i evaded learning docker for sometime, and as you can tell it's time to embrace my fear of virtualization  
 
 # learning docker
 i watched an [introduction to docker](https://www.youtube.com/watch?v=eGz9DS-aIeY&t=672s)
